@@ -44,7 +44,13 @@ class _CharacterViewState extends State<CharacterView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text('Rick and Morty')),
+      appBar: AppBar(
+        centerTitle: false,
+        title: Text(
+          'APP - Rick and Morty',
+          style: context.textTheme.displayLarge,
+        ),
+      ),
       body: Obx(
         () => _controller.isLoadingMore.value
             ? Column(
@@ -68,9 +74,14 @@ class _CharacterViewState extends State<CharacterView> {
                                 child: ListTile(
                                   leading: Image.network(
                                     item.image,
-                                    scale: 1.2,
+                                    height: 120,
+                                    width: 70,
+                                    fit: BoxFit.fill,
                                   ),
-                                  title: Text(item.name),
+                                  title: Text(
+                                    item.name,
+                                    style: context.textTheme.bodyMedium,
+                                  ),
                                 ),
                               ),
                             ),

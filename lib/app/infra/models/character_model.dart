@@ -3,15 +3,6 @@
 import '../../domain/entities/character_entity.dart';
 import '../core/models/base_model.dart';
 
-List<CharacterEntity> collectionCharacterFromJson(List<dynamic> jsonList) {
-  return jsonList
-      .map(
-        (item) =>
-            CharacterModel.fromJson(item as Map<String, dynamic>).toEntity(),
-      )
-      .toList();
-}
-
 class CharacterModel implements BaseModel<CharacterEntity> {
   final int id;
   final String name;
