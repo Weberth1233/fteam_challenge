@@ -14,7 +14,7 @@ class RepositoryImpl<T extends BaseEntity> implements ICharacterRepository {
   @override
   Future<Either<Failure, List<CharacterEntity>>> getResults(String path) async {
     try {
-      final result = await dataSource.get<CharacterResponseModel>(
+      final result = await dataSource.get(
         (json) => CharacterResponseModel.fromJson(json),
         path,
       );

@@ -7,8 +7,8 @@ import '../models/character_response_model.dart';
 import 'package:http/http.dart' as http;
 
 abstract class IDataSource {
-  Future<R> get<R extends ApiResponse>(
-    R Function(Map<String, dynamic> json) fromJson,
+  Future<CharacterResponseModel> get(
+    CharacterResponseModel Function(Map<String, dynamic> json) fromJson,
     String path,
   );
 }
@@ -19,8 +19,8 @@ class DataSourcesImpl implements IDataSource {
   DataSourcesImpl({required this.client});
 
   @override
-  Future<R> get<R extends ApiResponse>(
-    R Function(Map<String, dynamic> json) fromJson,
+  Future<CharacterResponseModel> get(
+    CharacterResponseModel Function(Map<String, dynamic> json) fromJson,
     String path,
   ) async {
     try {
