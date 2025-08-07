@@ -1,9 +1,8 @@
 // data/models/info_model.dart
 
 import 'package:fteam_challenge/app/domain/entities/info_entity.dart';
-import 'package:fteam_challenge/app/infra/core/models/base_model.dart';
 
-class InfoModel implements BaseModel<InfoEntity> {
+class InfoModel {
   final int count;
   final int pages;
   final String? next;
@@ -29,7 +28,6 @@ class InfoModel implements BaseModel<InfoEntity> {
     return {'count': count, 'pages': pages, 'next': next, 'prev': prev};
   }
 
-  @override
   InfoEntity toEntity() {
     return InfoEntity(null, count: count, pages: pages, next: next, prev: prev);
   }

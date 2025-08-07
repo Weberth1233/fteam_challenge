@@ -1,9 +1,8 @@
 // data/models/character_model.dart
 
 import '../../domain/entities/character_entity.dart';
-import '../core/models/base_model.dart';
 
-class CharacterModel implements BaseModel<CharacterEntity> {
+class CharacterModel {
   final int id;
   final String name;
   final String status;
@@ -72,7 +71,6 @@ class CharacterModel implements BaseModel<CharacterEntity> {
     };
   }
 
-  @override
   CharacterEntity toEntity() {
     return CharacterEntity(
       id,

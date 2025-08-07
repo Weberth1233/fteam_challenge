@@ -8,7 +8,7 @@ class AppRoutes {
   static String get initialRoute => '/';
 
   static List<GetPage> get pages => [
-    GetPage(name: '/', page: () => const CharacterView()),
+    GetPage(name: '/', page: () => CharacterView()),
     GetPage(name: '/details', page: () => const DetailsCharacterView()),
   ];
 }

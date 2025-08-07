@@ -3,6 +3,7 @@ import 'package:fteam_challenge/app/presentation/core/helpers/context_theme.dart
 import 'package:get/route_manager.dart';
 
 import '../../../../domain/entities/character_entity.dart';
+import '../../../ui/theme/app_colors.dart';
 
 class DetailsCharacterView extends StatelessWidget {
   const DetailsCharacterView({super.key});
@@ -13,8 +14,11 @@ class DetailsCharacterView extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          'Details ${character.name}',
-          style: context.textTheme.displayLarge,
+          character.name,
+          style: context.textTheme.titleLarge!.copyWith(
+            fontWeight: FontWeight.bold,
+            color: AppColors.surface,
+          ),
         ),
       ),
       body: Center(
@@ -24,33 +28,63 @@ class DetailsCharacterView extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             spacing: 15,
             children: [
-              Container(
-                width: 300,
-                height: 300,
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(20),
-                  image: DecorationImage(
-                    fit: BoxFit.cover,
-                    image: NetworkImage(character.image),
+              Center(
+                child: Container(
+                  width: 200,
+                  height: 200,
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(10),
+                    image: DecorationImage(
+                      fit: BoxFit.contain,
+                      image: NetworkImage(character.image),
+                    ),
                   ),
                 ),
               ),
+              Divider(),
               Text(
-                'Name: ${character.name}',
-                style: context.textTheme.titleLarge,
+                'Details',
+                style: context.textTheme.headlineSmall!.copyWith(
+                  color: AppColors.textSecondary,
+                ),
               ),
-              Text(
-                'Status: ${character.status}',
-                style: context.textTheme.titleLarge,
+
+              RowTextIcon(
+                text: 'Name: ${character.name}',
+                icon: Icons.person_2,
               ),
-              Text(
-                'Species: ${character.species}',
-                style: context.textTheme.titleLarge,
+
+              RowTextIcon(
+                text: 'Status: ${character.status}',
+                icon: Icons.star,
+              ),
+
+              RowTextIcon(
+                text: ' Species: ${character.species}',
+                icon: Icons.pets_outlined,
               ),
             ],
           ),
         ),
       ),
+    );
+  }
+}
+
+class RowTextIcon extends StatelessWidget {
+  final String text;
+  final IconData icon;
+
+  const RowTextIcon({super.key, required this.text, required this.icon});
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      spacing: 10,
+      children: [
+        Icon(icon),
+        Text(text, style: context.textTheme.bodyMedium),
+      ],
     );
   }
 }

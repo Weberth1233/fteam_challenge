@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:fteam_challenge/app/presentation/core/bindings/app_bindings.dart';
 import 'package:get/get_navigation/src/root/get_material_app.dart';
-
 import 'app/presentation/core/routes/app_routes.dart';
 import 'app/presentation/ui/theme/app_theme.dart';
 
